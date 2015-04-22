@@ -6,7 +6,7 @@ class Login extends CI_Controller {
 	}
 	
 	function index() {
-
+		//var_dump($_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT']);
 		//var_dump($this->session->all_userdata());
 		if( $this->session->userdata('logged_in')  ) {			
 			$account = $this->session->userdata('account');

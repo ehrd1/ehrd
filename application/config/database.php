@@ -48,7 +48,7 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
+$db['default']['hostname'] = '125.227.105.193';
 $db['default']['username'] = 'ehrd';
 $db['default']['password'] = 'ehrd1234';
 $db['default']['database'] = 'eHRD';

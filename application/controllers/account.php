@@ -43,6 +43,7 @@ class Account extends CI_Controller {
 	
 	function update($unit_id){
 		if( empty($_POST['unitName']) ){
+			$this->load->model('unit_model');
 			$data ['unitData'] = $this->unit_model->SelectUnitByUnitID($unit_id);
 			$this->load->view('pages/head'); 
 			$this->load->view('unit/unit_edit_view',$data);

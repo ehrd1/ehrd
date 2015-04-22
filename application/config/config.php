@@ -14,7 +14,9 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://125.227.105.193:8080/eHRD/';
+
+$config['base_url']	= 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/eHRD/';
+//$config['base_url']	= 'http://125.227.105.193:8080/eHRD/';
 
 /*
 |--------------------------------------------------------------------------
