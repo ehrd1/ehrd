@@ -1,7 +1,9 @@
 <?php
-class Account_model extends CI_Model {
+class Account_model extends CI_Model
+{
 
-	function checkUnitName($unitName) {
+	function checkUnitName($unitName)
+	{
 		$this -> db ->select('*')->from('unit')->where('unit_name', $unitName)->limit(1); 
 		$query = $this -> db -> get(); 
 		if($query -> num_rows() == 1) {
@@ -10,13 +12,16 @@ class Account_model extends CI_Model {
 			return false;
 		}
 	}
-	function SelectUnitByUnitID($unit_id){
+
+	function SelectUnitByUnitID($unit_id)
+	{
 		$this -> db ->select('unit_id,unit_name,unit_status')->from('unit')->where('unit_id', $unit_id); 
 		$query = $this -> db -> get(); 
 		return $query->result_array();
 	}
 	
-	function UpdateUnitByUnitID($unit_id){
+	function UpdateUnitByUnitID($unit_id)
+	{
 		$unitName = $this->input->post('unitName');
 		$unitStatus = $this->input->post('unitStatus');
 		$user_id= $this->session->userdata('user_id');
@@ -32,17 +37,20 @@ class Account_model extends CI_Model {
 		return $this->db->update('unit', $data);
 	}
 	
-	function DelUnitByUnitID($unit_id){
+	function DelUnitByUnitID($unit_id)
+	{
 		$this->db->where('unit_id', $unit_id);
 		return $this->db->delete('unit'); 
 	}
 	
-	function DelAccountByID($id){
+	function DelAccountByID($id)
+	{
 		$this->db->where('id', $id);
 		return $this->db->delete('users');
 	}
 	
-	function SelectAccountList() {
+	function SelectAccountList()
+	{
 		$this -> db -> select('T1.id,T1.account,T1.name,T1.unit_id,T2.unit_name,T3.jobtitle_id,T3.jobtitle_name,T1.email,T1.status');
 		$this -> db -> from('users AS T1');
 		$this -> db -> join('unit AS T2', 'T1.unit_id = T2.unit_id','left');
@@ -52,11 +60,11 @@ class Account_model extends CI_Model {
 		return $query->result_array();	
 	}
 	
-	function InsertAccount(){
+	function InsertAccount()
+	{
 		$account = $this->input->post('account');
 		$userName = $this->input->post('userName');
 		$password = md5('123456');
-		$name = $this->input->post('userName');
 		$unit_id = $this->input->post('unitID');
 		$jobtitle_id = $this->input->post('jobtitleID');
 		//$permission_id = $this->input->post('permission_id');
